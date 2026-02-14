@@ -8,7 +8,7 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { useAuth } from '@/context/AuthContext';
-import { AlertCircle } from 'lucide-react';
+import { AlertCircle, Smartphone } from 'lucide-react';
 import Logo from "@/assets/logo/logo.png";
 import PhFlag from "@/assets/flags/ph.svg";
 
@@ -57,7 +57,18 @@ export default function LoginDialog({ children }: { children: React.ReactNode })
                     </TabsList>
                     
                     <TabsContent value="citizen" className="space-y-4 mt-4">
-                        <div className="space-y-2">
+                        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+                            <div className="flex items-start gap-2">
+                                <Smartphone className="h-5 w-5 text-yellow-600 mt-0.5" />
+                                <div>
+                                    <p className="text-sm font-semibold text-yellow-800">Coming Soon!</p>
+                                    <p className="text-xs text-yellow-700 mt-1">
+                                        Citizen web login will be available soon. Currently only available on mobile app.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="space-y-2 opacity-50 pointer-events-none">
                             <Label htmlFor="citizen-phone">Mobile Number</Label>
                             <div className="relative">
                                 <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
@@ -68,42 +79,26 @@ export default function LoginDialog({ children }: { children: React.ReactNode })
                                 <Input 
                                     id="citizen-phone" 
                                     placeholder="9319887714" 
-                                    value={username}
-                                    onChange={(e) => {
-                                        const value = e.target.value.replace(/\D/g, '');
-                                        if (value.length <= 10) setUsername(value);
-                                        setError('');
-                                    }}
-                                    maxLength={10}
+                                    disabled
                                     className="pl-24"
                                 />
                             </div>
                             <p className="text-xs text-muted-foreground">Enter 10-digit mobile number</p>
                         </div>
-                        <div className="space-y-2">
+                        <div className="space-y-2 opacity-50 pointer-events-none">
                             <Label htmlFor="citizen-password">Password</Label>
                             <Input 
                                 id="citizen-password" 
                                 type="password" 
                                 placeholder="Enter your password"
-                                value={password}
-                                onChange={(e) => {
-                                    setPassword(e.target.value);
-                                    setError('');
-                                }}
+                                disabled
                             />
                         </div>
-                        {error && (
-                            <div className="flex items-center gap-2 text-sm text-red-600 bg-red-50 p-3 rounded-md">
-                                <AlertCircle className="h-4 w-4" />
-                                <span>{error}</span>
-                            </div>
-                        )}
                         <Button 
-                            className="w-full bg-[#51BDEB] hover:bg-[#51BDEB]/90" 
-                            onClick={() => handleSignIn('citizen')}
+                            className="w-full bg-gray-400 cursor-not-allowed" 
+                            disabled
                         >
-                            Sign In as Citizen
+                            Sign In as Citizen (Coming Soon)
                         </Button>
                     </TabsContent>
                     
@@ -149,7 +144,7 @@ export default function LoginDialog({ children }: { children: React.ReactNode })
                 </Tabs>
                 
                 <div className="text-center text-sm text-muted-foreground mt-4">
-                    Don't have an account? <a href="/register" className="text-[#51BDEB] hover:underline">Register</a>
+                    Don't have an account? <span className="text-gray-400">Registration available on mobile app</span>
                 </div>
             </DialogContent>
         </Dialog>

@@ -10,12 +10,15 @@ import {
 } from '@/components/ui/navigation-menu';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { Menu, User, LogOut } from 'lucide-react';
+import { Menu, User, LogOut, Smartphone } from 'lucide-react';
 import Logo from "@/assets/logo/logo.png";
 import LoginDialog from './LoginForm/LoginDialog';
+
 export default function PublicNavbar() {
   const [open, setOpen] = useState(false);
+  const [showMobileDialog, setShowMobileDialog] = useState(false);
   const { user, logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
@@ -100,8 +103,8 @@ export default function PublicNavbar() {
                   Sign In
                 </Button>
               </LoginDialog>
-              <Button className="border-2 py-3 px-6 border-[#51BDEB] shadow-lg" asChild>
-                <Link to="/register">Register</Link>
+              <Button className="border-2 py-3 px-6 border-[#51BDEB] shadow-lg" onClick={() => setShowMobileDialog(true)}>
+                Register
               </Button>
             </>
           )}
@@ -157,8 +160,8 @@ export default function PublicNavbar() {
                         Sign In
                       </Button>
                     </LoginDialog>
-                    <Button className="border-2 border-[#51BDEB] shadow-lg" asChild>
-                      <Link to="/register" onClick={() => setOpen(false)}>Register</Link>
+                    <Button className="border-2 border-[#51BDEB] shadow-lg" onClick={() => { setShowMobileDialog(true); setOpen(false); }}>
+                      Register
                     </Button>
                   </>
                 )}
@@ -167,6 +170,33 @@ export default function PublicNavbar() {
           </SheetContent>
         </Sheet>
       </div>
+
+      {/* Mobile App Dialog */}
+      <Dialog open={showMobileDialog} onOpenChange={setShowMobileDialog}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-xl">
+              <Smartphone className="h-6 w-6 text-[#51BDEB]" />
+              Mobile App Required
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4 py-4">
+            <p className="text-gray-600">
+              Registration is currently only available through our mobile application.
+            </p>
+            <div className="bg-[#51BDEB]/10 border border-[#51BDEB]/30 rounded-lg p-4">
+              <p className="text-sm text-gray-700">
+                <span className="font-semibold">Web version coming soon!</span>
+                <br />
+                Please download our mobile app to register and access all features.
+              </p>
+            </div>
+            <Button onClick={() => setShowMobileDialog(false)} className="w-full bg-[#51BDEB] hover:bg-[#20A0D8]">
+              Got it
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </nav>
   );
 }
