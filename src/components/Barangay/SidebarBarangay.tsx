@@ -1,4 +1,4 @@
-import { Home, Users, FileText, LogOut, AlertTriangle, User, ChevronDown,LayoutDashboard, ClipboardList, Map , MapPin, Bell } from 'lucide-react';
+import { Users, LogOut, User, ChevronDown, LayoutDashboard, ClipboardList, MapPin, Bell } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import Logo from "@/assets/logo/logo.png";

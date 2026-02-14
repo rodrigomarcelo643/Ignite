@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, type  ReactNode } from 'react';
+import { createContext, useContext, useState, type  ReactNode } from 'react';
 import { loginUser } from '@/services/auth/authService';
 
 interface User {
@@ -21,9 +21,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const storedUser = localStorage.getItem('user');
     return storedUser ? JSON.parse(storedUser) : null;
   });
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
 
-  const login = async (username: string, password: string, role: 'barangay' | 'citizen') => {
+  const login = async (username: string, password: string) => {
     setLoading(true);
     try {
       const user = await loginUser(username, password);

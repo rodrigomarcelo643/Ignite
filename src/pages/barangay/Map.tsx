@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { MapPin, Calendar, User, AlertTriangle, FileText, Brain, TrendingUp, Bell, Plus, X, Download } from 'lucide-react';
+import { MapPin, Calendar, User, AlertTriangle, FileText, Brain, TrendingUp, Plus, X, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const mapContainerStyle = {
@@ -65,7 +65,7 @@ interface OutbreakAlert {
 export default function Map() {
   const [markers, setMarkers] = useState<MarkerData[]>([]);
   const [filteredMarkers, setFilteredMarkers] = useState<MarkerData[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
   const [selectedMarker, setSelectedMarker] = useState<MarkerData | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [severityFilter, setSeverityFilter] = useState<string>('all');
@@ -171,7 +171,7 @@ export default function Map() {
         setFilteredMarkers(markerData);
         
         // Check for outbreak patterns and save to database
-        await checkOutbreakPatterns(markerData);
+        await checkOutbreakPatterns();
       } catch (error) {
         console.error('Error fetching reports:', error);
       } finally {
@@ -182,7 +182,7 @@ export default function Map() {
     fetchReports();
   }, []);
 
-  const checkOutbreakPatterns = async (markerData: MarkerData[]) => {
+  const checkOutbreakPatterns = async () => {
     try {
       const usersRef = collection(db, 'users');
       const usersSnapshot = await getDocs(usersRef);
@@ -296,7 +296,7 @@ export default function Map() {
             commonSymptoms,
             aiAnalysis: aiAnalysisText,
             possibleDiseases: diseases,
-            severity: affectedPercentage >= 90 || symptomPatternPercentage >= 95 ? 'critical' : 'high',
+            severity: (affectedPercentage >= 90 || symptomPatternPercentage >= 95 ? 'critical' : 'high') as 'critical' | 'high' | 'moderate',
           };
 
           // Show modal - don't save to database yet
@@ -418,7 +418,7 @@ export default function Map() {
       const emergencyReports = markers.filter(m => m.type === 'emergency').length;
 
       // Check for outbreak after getting citizen data
-      await checkOutbreakPatterns(markers);
+      await checkOutbreakPatterns();
 
       const symptomsList = markers
         .filter(m => m.symptoms && m.symptoms.length > 0)
