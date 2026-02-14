@@ -1,4 +1,4 @@
-import { Home, Users, FileText, LogOut, AlertTriangle, User, ChevronDown, ClipboardList } from 'lucide-react';
+import { Home, Users, FileText, LogOut, AlertTriangle, User, ChevronDown,LayoutDashboard, ClipboardList, Map , MapPin, Bell } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import Logo from "@/assets/logo/logo.png";
@@ -40,8 +40,10 @@ export default function SidebarBarangay() {
     };
 
     const menuItems = [
-        { icon: Home, label: 'Dashboard', path: '/barangay/dashboard' },
+        { icon: LayoutDashboard, label: 'Dashboard', path: '/barangay/dashboard' },
         { icon: Users, label: 'Citizens', path: '/barangay/citizens' },
+        { icon: MapPin, label: 'Health Map', path: '/barangay/map' },
+        { icon: Bell, label: 'Outbreak Alerts', path: '/barangay/alerts' },
     ];
 
     return (
@@ -62,7 +64,7 @@ export default function SidebarBarangay() {
                                     <SidebarMenuItem key={item.path}>
                                         <SidebarMenuButton 
                                             asChild 
-                                            className={`h-12 transition-colors ${
+                                            className={`h-10 pl-3 transition-colors ${
                                                 isActive 
                                                     ? 'bg-[#51BDEB] text-white hover:bg-[#51BDEB] hover:text-white' 
                                                     : 'hover:bg-[#51BDEB]/10 hover:text-[#51BDEB]'
@@ -126,7 +128,7 @@ export default function SidebarBarangay() {
                         <div className="flex flex-col min-w-0">
                             <span className="text-xs text-gray-500 font-normal"></span>
                             <span className="font-semibold text-sm truncate">{user?.username}</span>
-                            <span className="text-xs text-gray-500 capitalize">{user?.role}  Health Official</span>
+                            <span className="text-xs text-gray-500 capitalize">{user?.role} Health Official</span>
                         </div>
                     </div>
                 </div>

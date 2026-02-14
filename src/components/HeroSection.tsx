@@ -1,85 +1,101 @@
-import { useState, useEffect } from 'react';
 import { Button } from './ui/button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import LandingMap1 from "../assets/Landing_Map.jpg";
+import { Heart, Shield, Activity, Users } from 'lucide-react';
+import { motion } from 'framer-motion';
+
 export default function HeroSection() {
-    const [currentSlide, setCurrentSlide] = useState(0);
-    
-    const slides = [
-        {
-            title: 'Welcome to HealthWatch',
-            subtitle: 'Your comprehensive health monitoring solution',
-            image: LandingMap1
-        },
-        {
-            title: 'Track Your Health',
-            subtitle: 'Monitor vital signs and health metrics in real-time',
-            image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=1920&h=600&fit=crop'
-        },
-        {
-            title: 'Smart Analytics',
-            subtitle: 'Get insights and recommendations based on your data',
-            image: 'https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=1920&h=600&fit=crop'
-        }
-    ];
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentSlide((prev) => (prev + 1) % slides.length);
-        }, 7000);
-        return () => clearInterval(timer);
-    }, [slides.length]);
-
-    const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
-    const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-
     return (
-        <div className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[730px] w-full overflow-hidden">
-            {slides.map((slide, index) => (
-                <div
-                    key={index}
-                    className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
-                >
-                    <img 
-                        src={slide.image} 
-                        alt={slide.title}
-                        className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/50 flex items-center justify-end">
-                       {/** <div className="text-center text-white px-4">
-                            <h1 className="text-5xl md:text-6xl font-bold mb-6">{slide.title}</h1>
-                            <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">{slide.subtitle}</p>
-                            <div className="flex gap-4 justify-center">
-                                <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">Get Started</Button>
-                                <Button size="lg" className="border-white text-white hover:bg-white/20">Learn More</Button>
-                            </div>
+        <div className="bg-white min-h-screen flex items-center justify-center py-12 relative overflow-hidden">
+            {/* Spiral Background Lines */}
+            <div className="absolute inset-0 pointer-events-none">
+                <svg className="absolute top-0 left-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="spiralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#51BDEB" stopOpacity="0.1" />
+                            <stop offset="100%" stopColor="#20A0D8" stopOpacity="0.05" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M 0,300 Q 200,100 400,300 T 800,300" stroke="url(#spiralGradient)" strokeWidth="2" fill="none" />
+                    <path d="M 100,500 Q 300,300 500,500 T 900,500" stroke="url(#spiralGradient)" strokeWidth="2" fill="none" />
+                    <path d="M -100,200 Q 100,50 300,200 T 700,200" stroke="url(#spiralGradient)" strokeWidth="1.5" fill="none" />
+                    <circle cx="20%" cy="20%" r="150" stroke="#51BDEB" strokeWidth="1" fill="none" opacity="0.1" />
+                    <circle cx="80%" cy="70%" r="200" stroke="#20A0D8" strokeWidth="1" fill="none" opacity="0.08" />
+                    <circle cx="90%" cy="30%" r="100" stroke="#51BDEB" strokeWidth="1" fill="none" opacity="0.1" />
+                </svg>
+            </div>
+            <div className="container mx-auto px-4">
+                <div className="grid md:grid-cols-2 gap-16 lg:gap-20 items-center max-w-7xl mx-auto">
+                    <motion.div 
+                        className="space-y-6 text-left"
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight text-left">
+                            Welcome to <span className="text-[#51BDEB]">HealthWatch</span>
+                        </h1>
+                        <p className="text-lg md:text-xl text-gray-600 text-left">
+                            Your comprehensive community health monitoring and reporting solution
+                        </p>
+                        <div className="flex flex-wrap gap-4 justify-start">
+                            <Button size="lg" className="bg-[#51BDEB] hover:bg-[#20A0D8] text-white font-semibold">
+                                Get Started
+                            </Button>
+                            <Button size="lg" variant="outline" className="border-2 border-[#51BDEB] text-[#51BDEB] hover:bg-[#51BDEB]/10">
+                                Learn More
+                            </Button>
                         </div>
-                        */} 
+                    </motion.div>
+                    <div className="grid grid-cols-2 gap-6">
+                        <motion.div 
+                            className="bg-white border-2 border-[#51BDEB]/20 rounded-xl p-6 hover:shadow-lg transition-shadow"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                        >
+                            <div className="w-12 h-12 bg-[#51BDEB]/10 rounded-lg flex items-center justify-center mb-4">
+                                <Heart className="h-6 w-6 text-[#51BDEB]" />
+                            </div>
+                            <h3 className="font-semibold text-gray-900 mb-2">Health Monitoring</h3>
+                            <p className="text-sm text-gray-600">Track and monitor community health metrics</p>
+                        </motion.div>
+                        <motion.div 
+                            className="bg-white border-2 border-[#51BDEB]/20 rounded-xl p-6 hover:shadow-lg transition-shadow"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                        >
+                            <div className="w-12 h-12 bg-[#51BDEB]/10 rounded-lg flex items-center justify-center mb-4">
+                                <Shield className="h-6 w-6 text-[#51BDEB]" />
+                            </div>
+                            <h3 className="font-semibold text-gray-900 mb-2">Emergency Response</h3>
+                            <p className="text-sm text-gray-600">Quick response to health emergencies</p>
+                        </motion.div>
+                        <motion.div 
+                            className="bg-white border-2 border-[#51BDEB]/20 rounded-xl p-6 hover:shadow-lg transition-shadow"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                        >
+                            <div className="w-12 h-12 bg-[#51BDEB]/10 rounded-lg flex items-center justify-center mb-4">
+                                <Activity className="h-6 w-6 text-[#51BDEB]" />
+                            </div>
+                            <h3 className="font-semibold text-gray-900 mb-2">Real-time Tracking</h3>
+                            <p className="text-sm text-gray-600">Live updates on health incidents</p>
+                        </motion.div>
+                        <motion.div 
+                            className="bg-white border-2 border-[#51BDEB]/20 rounded-xl p-6 hover:shadow-lg transition-shadow"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.4 }}
+                        >
+                            <div className="w-12 h-12 bg-[#51BDEB]/10 rounded-lg flex items-center justify-center mb-4">
+                                <Users className="h-6 w-6 text-[#51BDEB]" />
+                            </div>
+                            <h3 className="font-semibold text-gray-900 mb-2">Community Care</h3>
+                            <p className="text-sm text-gray-600">Connect citizens with health services</p>
+                        </motion.div>
                     </div>
                 </div>
-            ))}
-            
-            <button
-                onClick={prevSlide}
-                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 p-1.5 sm:p-2 rounded-full transition-colors z-10"
-            >
-                <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6 text-white" />
-            </button>
-            <button
-                onClick={nextSlide}
-                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 p-1.5 sm:p-2 rounded-full transition-colors z-10"
-            >
-                <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6 text-white" />
-            </button>
-            
-            <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2 z-10">
-                {slides.map((_, index) => (
-                    <button
-                        key={index}
-                        onClick={() => setCurrentSlide(index)}
-                        className={`w-3 h-3 rounded-full transition-colors ${index === currentSlide ? 'bg-white' : 'bg-white/50'}`}
-                    />
-                ))}
             </div>
         </div>
     );

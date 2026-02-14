@@ -52,7 +52,7 @@ export default function PublicNavbar() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} text-base font-medium hover:text-[#51BDEB] transition-colors`}>
-                  <Link to="/contact">Map</Link>
+                  <Link to="/pricing">Pricing</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>

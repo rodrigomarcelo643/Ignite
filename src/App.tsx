@@ -6,10 +6,10 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import About from './pages/About';
 import Register from './pages/Register';
-import Map from "./pages/public/Map";
 import BarangayLayout from './pages/barangay/BarangayLayout';
 import Services from './pages/Services';
 import './App.css';
+import Pricing from './pages/public/Pricing';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
           <Route path="/about" element={<><PublicNavbar /><About /></>} />
           <Route path="/register" element={<><PublicNavbar /><Register /></>} />
           <Route path="services" element={<><PublicNavbar /><Services /></>} />
-          <Route path="/map" element={<><PublicNavbar /><Map /></>} />
+          <Route path="/pricing" element={<><PublicNavbar /><Pricing /></>} />
           <Route 
             path="/barangay/*" 
             element={

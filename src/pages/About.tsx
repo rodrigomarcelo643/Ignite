@@ -1,94 +1,103 @@
-import { Card, CardContent } from '@/components/ui/card';
 import { Heart, Shield, Users, TrendingUp } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function About() {
   return (
-    <div className="pt-20">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#51BDEB] to-cyan-500 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">About HealthWatch</h1>
-          <p className="text-xl max-w-3xl mx-auto">
-            Empowering communities with real-time health monitoring and data-driven insights for a healthier tomorrow.
-          </p>
-        </div>
-      </section>
-
-      {/* Mission Section */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6 text-center">Our Mission</h2>
-          <p className="text-lg text-muted-foreground text-center mb-12">
-            HealthWatch is dedicated to revolutionizing public health management through innovative technology. 
-            We provide comprehensive health monitoring solutions that connect citizens, healthcare providers, 
-            and government agencies to create a unified approach to community wellness.
-          </p>
-        </div>
-
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-          <Card>
-            <CardContent className="pt-6 text-center">
-              <Heart className="h-12 w-12 mx-auto mb-4 text-[#51BDEB]" />
-              <h3 className="text-xl font-semibold mb-2">Health First</h3>
-              <p className="text-muted-foreground">Prioritizing citizen health with real-time monitoring and alerts</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="pt-6 text-center">
-              <Shield className="h-12 w-12 mx-auto mb-4 text-[#51BDEB]" />
-              <h3 className="text-xl font-semibold mb-2">Secure Data</h3>
-              <p className="text-muted-foreground">Bank-level encryption protecting your sensitive health information</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="pt-6 text-center">
-              <Users className="h-12 w-12 mx-auto mb-4 text-[#51BDEB]" />
-              <h3 className="text-xl font-semibold mb-2">Community Focus</h3>
-              <p className="text-muted-foreground">Connecting communities for better health outcomes</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="pt-6 text-center">
-              <TrendingUp className="h-12 w-12 mx-auto mb-4 text-[#51BDEB]" />
-              <h3 className="text-xl font-semibold mb-2">Data Analytics</h3>
-              <p className="text-muted-foreground">Advanced insights for informed health decisions</p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Vision Section */}
-      <section className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6 text-center">Our Vision</h2>
-            <p className="text-lg text-muted-foreground text-center">
-              We envision a world where health data is accessible, actionable, and empowers every individual 
-              to take control of their wellness. Through HealthWatch, we're building a future where preventive 
-              care is the norm, health emergencies are detected early, and communities thrive together.
+    <div className="bg-white min-h-screen flex items-center justify-center py-12 relative overflow-hidden">
+      {/* Spiral Background Lines */}
+      <div className="absolute inset-0 pointer-events-none">
+        <svg className="absolute top-0 left-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="aboutSpiralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#51BDEB" stopOpacity="0.1" />
+              <stop offset="100%" stopColor="#20A0D8" stopOpacity="0.05" />
+            </linearGradient>
+          </defs>
+          <path d="M 0,300 Q 200,100 400,300 T 800,300" stroke="url(#aboutSpiralGradient)" strokeWidth="2" fill="none" />
+          <path d="M 100,500 Q 300,300 500,500 T 900,500" stroke="url(#aboutSpiralGradient)" strokeWidth="2" fill="none" />
+          <path d="M -100,200 Q 100,50 300,200 T 700,200" stroke="url(#aboutSpiralGradient)" strokeWidth="1.5" fill="none" />
+          <circle cx="20%" cy="20%" r="150" stroke="#51BDEB" strokeWidth="1" fill="none" opacity="0.1" />
+          <circle cx="80%" cy="70%" r="200" stroke="#20A0D8" strokeWidth="1" fill="none" opacity="0.08" />
+          <circle cx="90%" cy="30%" r="100" stroke="#51BDEB" strokeWidth="1" fill="none" opacity="0.1" />
+        </svg>
+      </div>
+      
+      <div className="container mx-auto px-4">
+        <div className="grid md:grid-cols-2 gap-16 lg:gap-20 items-center max-w-7xl mx-auto">
+          <motion.div 
+            className="space-y-6 text-left"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight text-left">
+              About <span className="text-[#51BDEB]">HealthWatch</span>
+            </h1>
+            <p className="text-lg md:text-xl text-gray-600 text-left">
+              Empowering communities with real-time health monitoring and data-driven insights for a healthier tomorrow.
             </p>
+            <p className="text-base text-gray-600 text-left">
+              HealthWatch is dedicated to revolutionizing public health management through innovative technology. 
+              We provide comprehensive health monitoring solutions that connect citizens, healthcare providers, 
+              and government agencies to create a unified approach to community wellness.
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-2 gap-6">
+            <motion.div 
+              className="bg-white border-2 border-[#51BDEB]/20 rounded-xl p-6 hover:shadow-lg transition-shadow"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="w-12 h-12 bg-[#51BDEB]/10 rounded-lg flex items-center justify-center mb-4">
+                <Heart className="h-6 w-6 text-[#51BDEB]" />
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Health First</h3>
+              <p className="text-sm text-gray-600">Prioritizing citizen health with real-time monitoring</p>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-white border-2 border-[#51BDEB]/20 rounded-xl p-6 hover:shadow-lg transition-shadow"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="w-12 h-12 bg-[#51BDEB]/10 rounded-lg flex items-center justify-center mb-4">
+                <Shield className="h-6 w-6 text-[#51BDEB]" />
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Secure Data</h3>
+              <p className="text-sm text-gray-600">Bank-level encryption protecting your information</p>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-white border-2 border-[#51BDEB]/20 rounded-xl p-6 hover:shadow-lg transition-shadow"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <div className="w-12 h-12 bg-[#51BDEB]/10 rounded-lg flex items-center justify-center mb-4">
+                <Users className="h-6 w-6 text-[#51BDEB]" />
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Community Focus</h3>
+              <p className="text-sm text-gray-600">Connecting communities for better health outcomes</p>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-white border-2 border-[#51BDEB]/20 rounded-xl p-6 hover:shadow-lg transition-shadow"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <div className="w-12 h-12 bg-[#51BDEB]/10 rounded-lg flex items-center justify-center mb-4">
+                <TrendingUp className="h-6 w-6 text-[#51BDEB]" />
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Data Analytics</h3>
+              <p className="text-sm text-gray-600">Advanced insights for informed health decisions</p>
+            </motion.div>
           </div>
         </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-3 gap-8 text-center">
-          <div>
-            <h3 className="text-4xl font-bold text-[#51BDEB] mb-2">10K+</h3>
-            <p className="text-muted-foreground">Active Users</p>
-          </div>
-          <div>
-            <h3 className="text-4xl font-bold text-[#51BDEB] mb-2">50+</h3>
-            <p className="text-muted-foreground">Partner Hospitals</p>
-          </div>
-          <div>
-            <h3 className="text-4xl font-bold text-[#51BDEB] mb-2">24/7</h3>
-            <p className="text-muted-foreground">Health Monitoring</p>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }
