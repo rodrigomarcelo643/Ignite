@@ -503,11 +503,11 @@ HEALTH PATTERN ANALYSIS REPORT
 Generated: ${reportDate}
 
 ========================================
-CITIZEN STATISTICS
+RESIDENT STATISTICS
 ========================================
-Total Citizens: ${aiAnalysis.totalCitizens || 'N/A'}
-Citizens Reported: ${aiAnalysis.citizensReported || 'N/A'}
-Citizens Not Reported: ${aiAnalysis.citizensNotReported || 'N/A'}
+Total Residents: ${aiAnalysis.totalCitizens || 'N/A'}
+Residents Reported: ${aiAnalysis.citizensReported || 'N/A'}
+Residents Not Reported: ${aiAnalysis.citizensNotReported || 'N/A'}
 Total Reports: ${markers.length}
 Emergency Reports (Anonymous): ${aiAnalysis.emergencyReports || 0}
 
@@ -977,7 +977,7 @@ END OF REPORT
                     </div>
                     <div className="bg-white rounded-lg p-3 text-center">
                       <p className="text-3xl font-bold text-gray-800">{outbreakAlert.totalPopulation}</p>
-                      <p className="text-xs text-gray-600">Citizens</p>
+                      <p className="text-xs text-gray-600">Residents</p>
                     </div>
                   </div>
 
