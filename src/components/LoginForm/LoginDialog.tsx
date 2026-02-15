@@ -52,7 +52,7 @@ export default function LoginDialog({ children }: { children: React.ReactNode })
                 
                 <Tabs defaultValue="citizen" className="w-full">
                     <TabsList className="grid w-full grid-cols-2">
-                        <TabsTrigger value="citizen">Citizen</TabsTrigger>
+                        <TabsTrigger value="citizen">Resident</TabsTrigger>
                         <TabsTrigger value="barangay">Barangay</TabsTrigger>
                     </TabsList>
                     
@@ -63,7 +63,7 @@ export default function LoginDialog({ children }: { children: React.ReactNode })
                                 <div>
                                     <p className="text-sm font-semibold text-yellow-800">Coming Soon!</p>
                                     <p className="text-xs text-yellow-700 mt-1">
-                                        Citizen web login will be available soon. Currently only available on mobile app.
+                                       Resident  web login will be available soon. Currently only available on mobile app.
                                     </p>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@ export default function LoginDialog({ children }: { children: React.ReactNode })
                             className="w-full bg-gray-400 cursor-not-allowed" 
                             disabled
                         >
-                            Sign In as Citizen (Coming Soon)
+                            Sign In as Resident (Coming Soon)
                         </Button>
                     </TabsContent>
                     
