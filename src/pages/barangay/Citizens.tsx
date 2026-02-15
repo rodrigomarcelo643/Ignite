@@ -127,7 +127,7 @@ export default function Citizens() {
   if (isLoading) {
     return (
       <div className="p-8">
-        <h1 className="text-3xl font-bold mb-6">Citizens Management</h1>
+        <h1 className="text-3xl font-bold mb-6">Residents Management</h1>
         <div className="mb-4">
           <Input placeholder="Search..." disabled className="max-w-sm" />
         </div>
@@ -140,7 +140,7 @@ export default function Citizens() {
 
   return (
     <div className="p-8">
-      <h1 className="text-3xl font-bold mb-6">Citizens Management</h1>
+      <h1 className="text-3xl font-bold mb-6">Residents  Management</h1>
       
       <div className="mb-4">
         <Input

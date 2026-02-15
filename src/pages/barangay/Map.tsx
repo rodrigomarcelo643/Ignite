@@ -612,12 +612,12 @@ END OF REPORT
       <style>{`
         @keyframes ping {
           75%, 100% {
-            transform: scale(2);
+            transform: scale(.5);
             opacity: 0;
           }
         }
         .animate-ping {
-          animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+          animation: ping .5s cubic-bezier(0, 0, 0.2, 1) infinite;
         }
       `}</style>
       <div className="p-6 border-b bg-white">

@@ -19,7 +19,7 @@ export default function BarangayLayout() {
           </div>
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/citizens" element={<Citizens />} />
+            <Route path="/resident" element={<Citizens />} />
             <Route path="/reports" element={<Reports />} />
             <Route path="/emergency-reports" element={<EmergencyReports />} />
             <Route path="/analytics" element={<div className="p-8"><h1 className="text-3xl font-bold">Analytics</h1></div>} />

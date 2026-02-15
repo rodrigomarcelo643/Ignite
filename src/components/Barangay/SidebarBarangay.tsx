@@ -41,7 +41,7 @@ export default function SidebarBarangay() {
 
     const menuItems = [
         { icon: LayoutDashboard, label: 'Dashboard', path: '/barangay/dashboard' },
-        { icon: Users, label: 'Citizens', path: '/barangay/citizens' },
+        { icon: Users, label: 'Residents', path: '/barangay/resident' },
         { icon: MapPin, label: 'Health Map', path: '/barangay/map' },
         { icon: Bell, label: 'Outbreak Alerts', path: '/barangay/alerts' },
     ];
